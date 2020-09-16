@@ -1,7 +1,7 @@
 import time
 
 class Repeater:
-    def __init__(self, num_runs = 5):
+    def __init__(self, num_runs = 10):
         self.num_runs = num_runs
     def __call__(self, func):
         def wrap():
@@ -12,7 +12,7 @@ class Repeater:
                 func()
             print("Конец функции обертки")
             end = time.time()
-            print('[*] Время выполнения: {} sec.'.format((end-start)))
+            print('[*] Время выполнения: {} sec.'.format((end-start)/self.num_runs))
         return wrap
 
 rep = Repeater()
